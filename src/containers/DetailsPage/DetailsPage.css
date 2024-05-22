@@ -1,0 +1,15 @@
+.details-container {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.919);
+    width: 800px;
+    text-align: left;
+    height: 500px;
+    padding: 25px;
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;  
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+

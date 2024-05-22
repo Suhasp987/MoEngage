@@ -1,0 +1,47 @@
+/* SearchBar.css */
+
+/* Style for input fields */
+input[type="text"] {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 120px;
+    color: black;
+  }
+  
+  /* Style for select dropdown */
+  select {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 120px;
+  }
+  
+ /* Container for aligning the button */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the button to the right */
+    padding: 10px;
+  }
+  
+  /* Style for logout button */
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Hover effect for logout button */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  

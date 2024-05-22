@@ -1,0 +1,17 @@
+@keyframes floatLeftToRight {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
+  .details {
+    color: rgb(213, 25, 25);
+    text-align: left;
+    border-radius: 20px; 
+    display: flex;
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

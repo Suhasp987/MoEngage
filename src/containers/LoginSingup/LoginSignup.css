@@ -1,0 +1,104 @@
+.loginSignup-container {
+    width: 100vw;
+    max-width: 500px;
+    height: 400px;
+  }
+  
+  .form {
+    padding: 40px;
+    border-radius: 8px;
+    border: 4px solid rgba(255, 255, 255, 0.926); /* White border with 50% opacity */
+    box-shadow: 0 0 10px rgba(255, 254, 254, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    
+  }
+  
+  .form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: xx-large;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group>label {
+    display: block;
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  .form-group > input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none; /* Remove full border */
+    border-bottom: 3px solid #f4f4f4; /* Add underline */
+    border-radius: 0; /* Remove border-radius to avoid rounded corners */
+    font-size: 14px;
+    background-color: transparent; /* Make background transparent */
+    color: rgb(255, 255, 255); /* Set font color to white */
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+  }
+  
+  .form-group > input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Placeholder text color */
+  }
+  
+  .form-group > input:focus {
+    border-bottom-color: #1890ff; /* Change underline color on focus */
+  }
+  
+  
+  .form>button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius:20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  
+  }
+  
+  .form-group label {
+    color: white;
+  }
+  
+  .loginSignup-container h2 {
+    color: white;
+  }  
+
+  .form>button:hover {
+    background-color: #0fdb16;
+  }
+  
+  .form>p {
+    text-align: center;
+    cursor: pointer;
+    color: #f8f8f8;
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 600px) {
+    .loginSignup-container {
+      max-width: 100%;
+    }
+  }
+  
