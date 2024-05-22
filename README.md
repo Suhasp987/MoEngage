@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Brewery Review System 
+The Brewery Review System is a full-stack web application designed to help users search for breweries by city, name, or type and provide reviews for the breweries they visit. Users can sign up for a new account or log in to an existing account to access the brewery search feature. The application integrates with the Open Brewery DB API to fetch and display brewery information, and it uses a hosted database to store user reviews. The reviews include a rating from 1 to 5 and a description.
+It leverages the Open Brewery DB API (https://www.openbrewerydb.org) to fetch brewery data. The application features a user-friendly interface built with React.js and Ant Design, and a robust backend powered by Node.js, Express, and MongoDB.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deployment
+This project is currently live and accessible at Render: Brewery Review System.
+https://brewery-review-system-frontend-1.onrender.com
 
-## Available Scripts
+Backend Code Repository: https://github.com/GHulk-19/Brewery_Review_System-Backend-
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+1. User Authentication: Secure login and registration using JSON Web Tokens (JWT).
+2. Brewery Data Fetching: Integration with a third-party API to retrieve and display brewery information.
+3. Search and Filters: Advanced search functionality allowing users to filter breweries by name, city, and type.
+4. Review System: Users can add reviews on the brewery details page, enhancing community engagement.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
+- **(Frontend)**: React.js,Antdesign
+- **(Backend)**: Node,Express,MongoDB
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to Run the Project
 
-### `npm test`
+To get the Brewery Review System up and running on your local machine, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone the Repository
+First, clone the repository to your local machine using the following command:
+```bash
+git clone https://github.com/GHulk-19/Brewery_Review_System_Frontend
+```
+### 2. Install Dependencies
+Navigate to the project directory and install all the necessary dependencies:
+```bash
+cd Brewery_Review_System_Frontend
+npm install
+```
+### 3. Start the Project
+Finally, start the application with the following command:
+```bash
+npm start
+```
 
-### `npm run build`
+This will launch the project, and you can access it locally to explore its features and functionalities. Enjoy discovering breweries and sharing your reviews with the community!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#
