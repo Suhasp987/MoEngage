@@ -35,6 +35,20 @@
     margin-bottom: 5px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
+
+  #username{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none; /* Remove full border */
+    border-bottom: 3px solid #f4f4f4; /* Add underline */
+    border-radius: 0; /* Remove border-radius to avoid rounded corners */
+    font-size: 14px;
+    background-color: transparent; /* Make background transparent */
+    color: rgb(255, 255, 255); /* Set font color to white */
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+  }
   
   .form-group > input {
     width: 100%;
