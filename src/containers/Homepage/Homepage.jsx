@@ -21,6 +21,9 @@ const Homepage = () => {
     setPageNumber(page);
   };
 
+
+  // 1     For displaying ratings in form of stars
+
   const renderStars = (rating) => {
     const roundedRating = Math.round(rating);
     const stars = [];

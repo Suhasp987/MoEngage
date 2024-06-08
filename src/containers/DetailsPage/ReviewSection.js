@@ -15,6 +15,21 @@ const ReviewSection = ({ id }) => {
     return savedState !== null ? JSON.parse(savedState) : true;
   });
 
+  const renderStars = (rating) => {
+    const roundedRating = Math.round(rating);
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <FaStar
+          key={i}
+          size={16}
+          color={i < roundedRating ? "#FFD700" : "#D3D3D3"} // Gold for filled stars, light gray for empty stars
+        />
+      );
+    }
+    return stars;
+  };
+
   useEffect(() => {
     localStorage.setItem(`isButtonEnabled-${id}`, JSON.stringify(isButtonEnabled));
   }, [isButtonEnabled, id]);
@@ -43,9 +58,13 @@ const ReviewSection = ({ id }) => {
   }, [id, username]);
 
   const handleReviewSubmit = async () => {
+    // 1 If submit button is clicked then the button will be disabled 
+        
     setIsButtonEnabled(false);
     setReviews([...reviews, { owner: username, review: newReview, rated: rating }]);
     const token = `bearer ${localStorage.getItem("token")}`;
+
+    //   1   API to get reviews and rating   
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add`, {
         newReview,
@@ -74,14 +93,17 @@ const ReviewSection = ({ id }) => {
           <br />
           {review.review}
           <br />
-          {review.rated}
-          <FaStar size={16} color="#FFD700" />
+          {renderStars(review.rated)}
         </div>
       ))}
-      <StarReview onRate={handleRating} />
-      <br />
+     
+
+
+        
       {isButtonEnabled && (
         <>
+        <StarReview onRate={handleRating} />
+        <br />
           <textarea
             value={newReview}
             onChange={(e) => setNewReview(e.target.value)}
