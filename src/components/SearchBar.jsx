@@ -45,6 +45,7 @@ const SearchBar = ({ onSearchResultsUpdate }) => {
     // Implement logout functionality here
     console.log('Logout clicked');
     window.location.href = './';
+    localStorage.clear("username")
   };
 
   return (

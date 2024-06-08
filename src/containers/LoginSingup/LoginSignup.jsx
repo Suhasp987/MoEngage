@@ -15,18 +15,23 @@ const LoginSignup = () => {
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
+    console.log(name,value);
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
       if (login) {
+        console.log(formData.username);
         const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, formData);
         console.log(response.data);
         if (response.data.success) {
           localStorage.setItem('token', response.data.token);
+          console.log(response.data.user)
+          localStorage.setItem('username', response.data.user.username);
           navigation('/home');
         }
       } else {

@@ -7,11 +7,12 @@ const ReviewSection = ({ id }) => {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState("");
   const [rating, setRating] = useState(0);
- 
   const [overallRating, setOverallRating] = useState(0);
+
+  const username = localStorage.getItem("username");
   const [isButtonEnabled, setIsButtonEnabled] = useState(() => {
     const savedState = localStorage.getItem(`isButtonEnabled-${id}`);
-    return savedState !== null ? JSON.parse(savedState) : false;
+    return savedState !== null ? JSON.parse(savedState) : true;
   });
 
   useEffect(() => {
@@ -26,17 +27,24 @@ const ReviewSection = ({ id }) => {
         );
         setReviews(reviewsResponse.data.reviews);
         setOverallRating(reviewsResponse.data.overallRating);
+
+        const hasReviewed = reviewsResponse.data.reviews.some(
+          (review) => review.owner === username
+        );
+        if (hasReviewed) {
+          setIsButtonEnabled(false);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [id]);
+  }, [id, username]);
 
   const handleReviewSubmit = async () => {
-    setIsButtonEnabled(true);
-    setReviews([...reviews, { review: newReview, rated: rating }]);
+    setIsButtonEnabled(false);
+    setReviews([...reviews, { owner: username, review: newReview, rated: rating }]);
     const token = `bearer ${localStorage.getItem("token")}`;
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/add`, {
@@ -53,7 +61,7 @@ const ReviewSection = ({ id }) => {
   };
 
   const handleRating = (selectedRating) => {
-    console.log(selectedRating)
+    console.log(selectedRating);
     setRating(selectedRating);
   };
 
@@ -72,7 +80,7 @@ const ReviewSection = ({ id }) => {
       ))}
       <StarReview onRate={handleRating} />
       <br />
-      {!isButtonEnabled && (
+      {isButtonEnabled && (
         <>
           <textarea
             value={newReview}
