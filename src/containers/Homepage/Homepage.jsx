@@ -1,19 +1,17 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Card, Pagination } from "antd";
 import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 import SearchBar from "../../components/SearchBar";
-import './Homepage.css';
+import "./Homepage.css";
 import axios from "axios";
-
 
 const Homepage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageContent, setPageContent] = useState(10);
   const [searchResults, setSearchResults] = useState([]);
-  const [rating, setRating] = useState(5);
-  
-
+  const [ratings, setRatings] = useState({});
 
   const updateSearchResults = (results) => {
     setSearchResults(results);
@@ -22,17 +20,42 @@ const Homepage = () => {
   const onPageChange = (page) => {
     setPageNumber(page);
   };
-  // const handleRatingFunc = async(id)=>{
-  //   console.log("Card id : ",id)
-  //   await axios.get(
-  //     `${process.env.REACT_APP_BACKEND_URL}/api/reviews/${id}`
-  //   ).then((res)=>{
-  //     setRating(res.data.overallRating);   
-  //   }).catch((err)=>{
-  //     // setRating(0);   
-  //     console.log(err)
-  //   })
-  // }
+
+  const renderStars = (rating) => {
+    const roundedRating = Math.round(rating);
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <FaStar
+          key={i}
+          size={16}
+          color={i < roundedRating ? "#FFD700" : "#D3D3D3"} // Gold for filled stars, light gray for empty stars
+        />
+      );
+    }
+    return stars;
+  };
+
+  const fetchRating = async (id) => {
+    try {
+      const reviewsResponse = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/reviews/${id}`
+      );
+      setRatings((prevRatings) => ({
+        ...prevRatings,
+        [id]: reviewsResponse.data.overallRating,
+      }));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    searchResults.forEach((item) => {
+      fetchRating(item.id);
+    });
+  }, [searchResults]);
+
   return (
     <StyledDiv>
       <div className="search">
@@ -43,45 +66,45 @@ const Homepage = () => {
           searchResults
             .slice((pageNumber - 1) * pageContent, pageNumber * pageContent)
             .map((item) => {
-            //   <Link key={item.id} to={`/details/${item.id}`}>
-                // handleRatingFunc(item.id);
-                return <Card
+              const rating = ratings[item.id] || 0; // Default to "Loading..." if rating not yet fetched
+              return (
+                <Card
+                  key={item.id}
                   title={item.name}
-                  extra={
-                    <Link to={`/details/${item.id}`}>More</Link>
-
-                  }
+                  extra={<Link to={`/details/${item.id}`}>More</Link>}
                   style={{
                     width: "100%",
                     marginBottom: "20px",
                     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                    fontFamily:"Cambria",
+                    fontFamily: "Cambria",
                   }}
                 >
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {renderStars(rating)}
+                  </div>
                   <p>
-                    <span style={{ fontWeight: "600", fontFamily:"Cambria" }}>Brewery Address: </span>
+                    <span style={{ fontWeight: "600", fontFamily: "Cambria" }}>Brewery Address: </span>
                     {item.address_1}
                   </p>
                   <p>
-                    <span style={{ fontWeight: "600", fontFamily:"Cambria" }}>Phone No: </span>
+                    <span style={{ fontWeight: "600", fontFamily: "Cambria" }}>Phone No: </span>
                     {item.phone}
                   </p>
                   <p>
-                    <span style={{ fontWeight: "600", fontFamily:"Cambria" }}>Website: </span>
+                    <span style={{ fontWeight: "600", fontFamily: "Cambria" }}>Website: </span>
                     {item.website_url}
                   </p>
                   <p>
-                    <span style={{ fontWeight: "600", fontFamily:"Cambria"}}>Current Rating: </span>
+                    <span style={{ fontWeight: "600", fontFamily: "Cambria" }}>Average Rating: </span>
                     {rating}
-                    
                   </p>
                   <p>
-                    <span style={{ fontWeight: "600", fontFamily:"Cambria" }}>State: </span>
+                    <span style={{ fontWeight: "600", fontFamily: "Cambria" }}>State: </span>
                     {item.state}
                   </p>
                 </Card>
-            //   </Link>
-                })}
+              );
+            })}
       </div>
       <div className="page">
         <Pagination
